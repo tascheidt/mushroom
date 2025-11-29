@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  --font-display: "Georgia", "Iowan Old Style", "Palatino", "Times New Roman", serif;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-[#f5f1e8] text-neutral-900 antialiased;
+  font-family: var(--font-sans);
+}
+
+.field-guide-shell {
+  background: radial-gradient(circle at top left, #e0f5ea 0, transparent 55%),
+    radial-gradient(circle at bottom right, #f7e6cf 0, transparent 55%),
+    #f5f1e8;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
