@@ -1,13 +1,14 @@
 import Image from "next/image";
 import type { MushroomIdentification } from "../types/mushroom";
-import { Leaf, MapPin, AlertTriangle } from "lucide-react";
+import { Leaf, MapPin, Cloud, Calendar, RefreshCw } from "lucide-react";
 
 type Props = {
   mushroom: MushroomIdentification;
-  onClick?: () => void;
+  onOpenDetail?: () => void;
+  onReprocess?: (mushroom: MushroomIdentification) => void;
 };
 
-export function MushroomCard({ mushroom, onClick }: Props) {
+export function MushroomCard({ mushroom, onOpenDetail, onReprocess }: Props) {
   const confidenceLabel =
     mushroom.confidence >= 85
       ? "High confidence"
@@ -34,28 +35,58 @@ export function MushroomCard({ mushroom, onClick }: Props) {
       : "bg-rose-50 text-rose-700 border-rose-200";
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-emerald-100 bg-neutral-50 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/70"
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-200">
-        <Image
-          src={`/images/${mushroom.imageFile}`}
-          alt={mushroom.commonName || mushroom.scientificName || "Mushroom"}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
-        />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent p-4 text-white">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/90">
-            Field Note
-          </p>
-          <h3 className="mt-1 text-base font-semibold">
-            {mushroom.commonName || "Unknown mushroom"}
-          </h3>
-          {mushroom.scientificName && (
-            <p className="text-xs italic text-emerald-100/90">{mushroom.scientificName}</p>
-          )}
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-emerald-100 bg-neutral-50 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+      <div 
+        className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-200 perspective-1000 cursor-pointer"
+        onClick={onOpenDetail}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onOpenDetail?.();
+          }
+        }}
+      >
+        {/* Flip container */}
+        <div className="flip-card-on-hover relative h-full w-full">
+          {/* Front side - Photo */}
+          <div className="absolute inset-0 backface-hidden">
+            <Image
+              src={`/images/${mushroom.imageFile}`}
+              alt={mushroom.commonName || mushroom.scientificName || "Mushroom"}
+              fill
+              className="object-cover"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent p-4 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/90">
+                Field Note
+              </p>
+              <h3 className="mt-1 text-base font-semibold">
+                {mushroom.commonName || "Unknown mushroom"}
+              </h3>
+              {mushroom.scientificName && (
+                <p className="text-xs italic text-emerald-100/90">{mushroom.scientificName}</p>
+              )}
+            </div>
+          </div>
+          {/* Back side - Info Card */}
+          <div className="absolute inset-0 rotate-y-180 backface-hidden">
+            {mushroom.infoCardImage ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={`data:image/png;base64,${mushroom.infoCardImage}`}
+                alt={`Info card for ${mushroom.commonName}`}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-emerald-50 to-emerald-100 p-4">
+                <p className="text-center text-sm text-emerald-800">
+                  Info card loading...
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -79,6 +110,29 @@ export function MushroomCard({ mushroom, onClick }: Props) {
           <p className="line-clamp-2">{mushroom.location}</p>
         </div>
 
+        {mushroom.observationDate && (
+          <div className="flex items-center gap-2 text-xs text-neutral-600">
+            <Calendar className="h-3.5 w-3.5 text-neutral-400" />
+            <p>
+              {new Date(mushroom.observationDate).toLocaleDateString()}
+              {mushroom.observationTime &&
+                ` at ${new Date(mushroom.observationTime).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}`}
+            </p>
+          </div>
+        )}
+
+        {mushroom.weather && (
+          <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50/50 px-2 py-1.5 text-xs">
+            <Cloud className="h-3.5 w-3.5 text-blue-600" />
+            <span className="text-blue-900">
+              {mushroom.weather.temperature.toFixed(1)}°C · {mushroom.weather.condition}
+            </span>
+          </div>
+        )}
+
         <dl className="mt-1 grid grid-cols-2 gap-3 border-t border-dashed border-neutral-200 pt-3 text-[0.72rem] text-neutral-700">
           <div>
             <dt className="font-semibold uppercase tracking-[0.18em] text-neutral-500">
@@ -94,15 +148,20 @@ export function MushroomCard({ mushroom, onClick }: Props) {
           </div>
         </dl>
 
-        <div className="mt-auto flex items-center gap-2 border-t border-dashed border-neutral-200 pt-3 text-[0.72rem] text-neutral-600">
-          <AlertTriangle className="h-3.5 w-3.5 text-amber-500" aria-hidden="true" />
-          <p className="line-clamp-2">
-            Never eat wild mushrooms based solely on AI identification. Always confirm with
-            an expert.
-          </p>
-        </div>
+        {onReprocess && (
+          <div className="mt-3 border-t border-dashed border-neutral-200 pt-3">
+            <button
+              type="button"
+              onClick={() => onReprocess(mushroom)}
+              className="flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-xs font-medium text-neutral-700 transition hover:bg-neutral-50 hover:border-emerald-400 hover:text-emerald-700"
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+              Reprocess
+            </button>
+          </div>
+        )}
       </div>
-    </button>
+    </div>
   );
 }
 

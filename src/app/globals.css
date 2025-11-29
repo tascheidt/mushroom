@@ -25,6 +25,33 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
+/* 3D Flip Animation */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-on-hover {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.7s;
+}
+
+.perspective-1000:hover .flip-card-on-hover {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

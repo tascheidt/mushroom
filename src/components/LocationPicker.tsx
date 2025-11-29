@@ -36,9 +36,11 @@ export function LocationPicker({ onLocationSelect, initialLocation }: LocationPi
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
+  
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    googleMapsApiKey: apiKey,
     libraries,
   });
 
@@ -112,11 +114,23 @@ export function LocationPicker({ onLocationSelect, initialLocation }: LocationPi
     };
   }, [isLoaded, map, onLocationSelect]);
 
+  if (!apiKey) {
+    return (
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+        <p className="font-semibold">Google Maps API Key Required</p>
+        <p className="mt-1">
+          Please set <code className="rounded bg-amber-100 px-1.5 py-0.5">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> in your <code className="rounded bg-amber-100 px-1.5 py-0.5">.env.local</code> file.
+        </p>
+      </div>
+    );
+  }
+
   if (loadError) {
     return (
       <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
         <p className="font-semibold">Error loading Google Maps</p>
         <p className="mt-1">Please check your API key configuration.</p>
+        <p className="mt-1 text-xs">Error: {loadError.message || "Unknown error"}</p>
       </div>
     );
   }
