@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { MapPin, Search } from "lucide-react";
 
@@ -33,7 +33,8 @@ export function LocationPicker({ onLocationSelect, initialLocation }: LocationPi
     lng: number;
   } | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [autocomplete, setAutocomplete] = useState<google.maps.places.Autocomplete | null>(null);
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-map-script",
@@ -72,30 +73,44 @@ export function LocationPicker({ onLocationSelect, initialLocation }: LocationPi
     [onLocationSelect]
   );
 
-  const onAutocompleteLoad = useCallback((autocomplete: google.maps.places.Autocomplete) => {
-    setAutocomplete(autocomplete);
-  }, []);
+  // Set up autocomplete when input ref and maps are loaded
+  useEffect(() => {
+    if (isLoaded && inputRef.current && !autocompleteRef.current) {
+      const autocompleteInstance = new google.maps.places.Autocomplete(inputRef.current, {
+        types: ["geocode", "establishment"],
+      });
+      
+      autocompleteRef.current = autocompleteInstance;
+      
+      autocompleteInstance.addListener("place_changed", () => {
+        const place = autocompleteInstance.getPlace();
+        if (place.geometry && place.geometry.location) {
+          const lat = place.geometry.location.lat();
+          const lng = place.geometry.location.lng();
+          const address = place.formatted_address || place.name || "";
+          const location = { address, lat, lng };
 
-  const onPlaceChanged = useCallback(() => {
-    if (autocomplete) {
-      const place = autocomplete.getPlace();
-      if (place.geometry && place.geometry.location) {
-        const lat = place.geometry.location.lat();
-        const lng = place.geometry.location.lng();
-        const address = place.formatted_address || place.name || "";
-        const location = { address, lat, lng };
+          setSelectedLocation(location);
+          setSearchQuery(address);
+          onLocationSelect(location);
 
-        setSelectedLocation(location);
-        onLocationSelect(location);
-
-        // Center map on selected location
-        if (map) {
-          map.setCenter({ lat, lng });
-          map.setZoom(15);
+          // Center map on selected location
+          if (map) {
+            map.setCenter({ lat, lng });
+            map.setZoom(15);
+          }
         }
-      }
+      });
     }
-  }, [autocomplete, map, onLocationSelect]);
+
+    // Cleanup
+    return () => {
+      if (autocompleteRef.current) {
+        google.maps.event.clearInstanceListeners(autocompleteRef.current);
+        autocompleteRef.current = null;
+      }
+    };
+  }, [isLoaded, map, onLocationSelect]);
 
   if (loadError) {
     return (
@@ -119,31 +134,13 @@ export function LocationPicker({ onLocationSelect, initialLocation }: LocationPi
       <div className="relative">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
         <input
+          ref={inputRef}
           type="text"
           placeholder="Search for a location..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full rounded-lg border border-neutral-300 bg-white py-2.5 pl-10 pr-4 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
         />
-        <div className="absolute left-0 top-full z-10 w-full">
-          <input
-            ref={(ref) => {
-              if (ref && isLoaded) {
-                const autocompleteInstance = new google.maps.places.Autocomplete(ref, {
-                  types: ["geocode", "establishment"],
-                });
-                onAutocompleteLoad(autocompleteInstance);
-                autocompleteInstance.addListener("place_changed", onPlaceChanged);
-              }
-            }}
-            type="text"
-            placeholder=""
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="sr-only"
-            aria-hidden="true"
-          />
-        </div>
       </div>
 
       <div className="overflow-hidden rounded-xl border border-neutral-200">

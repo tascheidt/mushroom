@@ -1,1 +1,442 @@
-[]
+[
+  {
+    "imageFile": "PXL_20251128_181802113.MP.jpg",
+    "scientificName": "Amanita phalloides",
+    "commonName": "Death Cap",
+    "confidence": 95,
+    "edibility": "Toxic",
+    "warning": "EXTREME DANGER: This mushroom is deadly poisonous. It contains amatoxins which cause severe liver and kidney failure. Ingestion is often fatal and there is no specific antidote. Do not handle or consume.",
+    "keyFeatures": {
+      "cap": "Convex, smooth, pale yellowish-green to olive-bronze with a satin or metallic sheen. No warts or patches visible.",
+      "gillsOrPores": "White gills (currently covered by a white partial veil in this young specimen), free from the stem.",
+      "stipe": "White, fairly stout, with a membranous skirt-like ring (annulus) forming under the cap. The base typically has a sac-like white cup (volva).",
+      "sporePrintColor": "White",
+      "other": "Emerges from a universal veil; the white volva at the base is a key identification feature often hidden in leaf litter."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Found in mixed forests, specifically forming symbiotic relationships with Coast Live Oaks (Quercus agrifolia) and other hardwoods in California.",
+    "funFact": "The Death Cap is an invasive species in North America, believed to have been accidentally introduced to California on the roots of imported cork oak seedlings.",
+    "cookingOrUsage": "None. This is one of the deadliest mushrooms in the world.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_181845020.jpg",
+    "scientificName": "Russula brevipes",
+    "commonName": "Short-stemmed Russula",
+    "confidence": 80,
+    "edibility": "Unknown",
+    "warning": "Identifying white mushrooms can be dangerous due to toxic lookalikes. Distinguishing between Russula and Lactarius species often requires observing the gills, checking for latex (milk), and checking the taste (for acridity), none of which can be done from a photo. Never consume wild mushrooms unless identification is confirmed by a local expert.",
+    "keyFeatures": {
+      "cap": "White to off-white, depressed center forming a funnel shape, matte surface covered in soil and debris.",
+      "gillsOrPores": "Not visible in photo, but expected to be white/cream and crowded.",
+      "stipe": "Short, stout, and largely buried in the substrate.",
+      "sporePrintColor": "White to cream.",
+      "other": "Emerging partially buried from the duff, a habit often referred to locally as a 'shrump'."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Growing in mixed forest floor debris containing oak leaves, wood chips, and likely redwood needles.",
+    "funFact": "This species is the most common host for the parasitic fungus Hypomyces lactifluorum, which transforms it into the bright orange and highly edible 'Lobster Mushroom'.",
+    "cookingOrUsage": "On its own, this mushroom is considered of poor culinary quality due to a bland or acrid taste and crisp, chalky texture. It is generally only collected for food when parasitized by the Lobster fungus.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_181917840.jpg",
+    "scientificName": "Inocybe species",
+    "commonName": "Fiber Cap",
+    "confidence": 85,
+    "edibility": "Toxic",
+    "warning": "FORAGING SAFETY WARNING: Never consume wild mushrooms unless you have confirmed their identity with an expert. Many Inocybe species contain muscarine, a toxin that affects the nervous system. Identification of Fiber Caps often requires microscopic analysis.",
+    "keyFeatures": {
+      "cap": "Conical to bell-shaped with a prominent central pointed bump (umbo); pale tan to straw-colored; surface is radially fibrous and splitting (rimose) towards the margin.",
+      "gillsOrPores": "Gills (not clearly visible in photo, but typically grayish-brown to cinnamon-brown in this genus).",
+      "stipe": "Slender, cylindrical, pale yellowish or whitish, lighter than the cap.",
+      "sporePrintColor": "Dull brown or cigar-brown (inferred from genus).",
+      "other": "The distinctive splitting or cracking of the cap margin is a hallmark feature of this group."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Growing on the forest floor in leaf litter and mixed woody debris, likely in association with nearby conifers (pine needles are visible) or hardwoods.",
+    "funFact": "The genus name 'Inocybe' is derived from the Greek words 'is' (fiber) and 'kybe' (head), perfectly describing the fibrous, often splitting texture of their caps.",
+    "cookingOrUsage": "None. These mushrooms are toxic and can cause severe sweating, salivation, and blurred vision.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_182050290.jpg",
+    "scientificName": "Suillus granulatus",
+    "commonName": "Granulated Bolete",
+    "confidence": 85,
+    "edibility": "Edible with Caution",
+    "warning": "While many Suillus species are edible, they are known to cause gastrointestinal upset in some people, particularly if the slimy cap cuticle is not removed (peeled) before eating. Always cook thoroughly. Never consume wild mushrooms without 100% positive identification.",
+    "keyFeatures": {
+      "cap": "Convex to flattened, golden-yellow to brownish-yellow, smooth surface that appears sticky or viscid.",
+      "gillsOrPores": "Yellow, angular pores (tubes) on the underside of the cap instead of gills.",
+      "stipe": "Thick, pale yellow stem covered in distinct reddish-brown glandular dots/smears; lacks a ring or skirt.",
+      "sporePrintColor": "Brown to olive-brown",
+      "other": "Viscid cap surface; no veil remnants visible."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Growing in soil mixed with gravel and needle litter. The litter appears to be largely Redwood (Sequoia sempervirens), but Suillus species obligately associate with Pines (Pinus). There is likely a pine tree nearby or mixed into this forest stand.",
+    "funFact": "This mushroom is often called the 'Weeping Bolete' because the glandular dots on the upper stem can exude milky droplets of liquid when the mushroom is young and fresh.",
+    "cookingOrUsage": "The slimy skin on the cap is typically peeled off and discarded before cooking to improve texture and reduce the risk of digestive issues. It is often dried or used in soups.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_182306330.jpg",
+    "scientificName": "Candolleomyces candolleanus",
+    "commonName": "Pale Brittlestem",
+    "confidence": 85,
+    "edibility": "Edible with Caution",
+    "warning": "Foraging for 'Little Brown Mushrooms' (LBMs) is extremely dangerous for beginners due to the visual similarity between edible species and deadly toxic ones, such as Galerina marginata or toxic Conocybe species. Never consume a mushroom identified solely by a photograph.",
+    "keyFeatures": {
+      "cap": "Conical to bell-shaped, honey-brown fading to pale tan or off-white (hygrophanous); margin often features hanging white veil fragments.",
+      "gillsOrPores": "Gills (implied), adnate, initially pale grayish-lilac becoming dark purplish-brown with age.",
+      "stipe": "White, slender, hollow, and very fragile (snaps easily); surface is smooth to slightly silky.",
+      "sporePrintColor": "Dark purplish-brown",
+      "other": "Grows in scattered troops or clusters on wood chips, buried wood, or rich forest litter."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing on the forest floor amongst mixed leaf litter (appearing to include Eucalyptus and Oak leaves) and decaying woody debris.",
+    "funFact": "Until recently, this mushroom was known as Psathyrella candolleana. It was moved to the genus Candolleomyces in 2020 based on phylogenetic analysis.",
+    "cookingOrUsage": "Although listed as edible with a mild flavor, it is thin-fleshed, fragile, and culinary value is low. It is often avoided due to the difficulty of distinguishing it from toxic lookalikes.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_183400685.jpg",
+    "scientificName": "Panaeolus species",
+    "commonName": "Mottlegill / Mower's Mushroom",
+    "confidence": 80,
+    "edibility": "Inedible",
+    "warning": "These fall into the category of 'Little Brown Mushrooms' (LBMs), which are notoriously difficult to distinguish without microscopic analysis. While they resemble the common Mower's Mushroom, they can easily be confused with toxic species or psychoactive lookalikes. Never consume LBMs identified solely by photographs.",
+    "keyFeatures": {
+      "cap": "Convex to bell-shaped (campanulate); hygrophanous (changing color with moisture), transitioning from dark reddish-brown when wet to pale tan/buff when dry, often with a darker band around the margin.",
+      "gillsOrPores": "Gills not clearly visible, but likely attached and mottled (spotted) with dark spores if mature.",
+      "stipe": "Slender, fragile, hollow, and pale to brownish; straight without a visible annulus (ring).",
+      "sporePrintColor": "Likely dark brown to jet black (characteristic of the genus).",
+      "other": "Growing in a cluster or troop; distinctive two-toned coloration on the caps due to drying."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing in soil mixed with grass and organic debris/mulch within a mixed forest environment.",
+    "funFact": "The term 'hygrophanous' describes the dramatic color change these caps undergo as they dry out, often leaving a distinct dark ring around the edge of the cap.",
+    "cookingOrUsage": "Not considered for culinary use. Some species in this genus contain serotonin or urea, and others are psychoactive, making accidental ingestion risky.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_183755708.jpg",
+    "scientificName": "Panaeolus species",
+    "commonName": "Mottlegill",
+    "confidence": 80,
+    "edibility": "Inedible",
+    "warning": "These mushrooms belong to a group informally known as 'Little Brown Mushrooms' (LBMs). LBMs are notoriously difficult to distinguish without microscopic analysis and a spore print. This group includes deadly toxic species (such as Galerina marginata), as well as psychoactive and inedible varieties. Never consume small brown mushrooms found in the wild.",
+    "keyFeatures": {
+      "cap": "Convex to bell-shaped (campanulate); hygrophanous (fading from dark grey-brown to tan/grey as it dries); smooth texture; often features a darker band around the margin.",
+      "gillsOrPores": "Gills (implied); typically adnate (attached to stem); likely mottled with black or dark grey spots due to maturing spores.",
+      "stipe": "Slender, straight, and relatively fragile; pale brownish to greyish; no visible ring or skirt.",
+      "sporePrintColor": "Likely jet black or very dark brown.",
+      "other": "Growing in a small troop or cluster directly from soil or mixed mulch."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing in soil enriched with organic matter or mulch within a mixed forest environment in Northern California.",
+    "funFact": "The common name 'Mottlegill' and the genus name 'Panaeolus' (Greek for 'all variegated') refer to the gills, which often look spotted or mottled because the dark spores mature unevenly across the gill surface.",
+    "cookingOrUsage": "These are not considered culinary mushrooms. Many species in this genus are inedible or mildly toxic, and some contain psychoactive compounds (psilocybin), making accidental ingestion legally and medically risky.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_183953711.jpg",
+    "scientificName": "Coprinellus micaceus",
+    "commonName": "Mica Cap",
+    "confidence": 85,
+    "edibility": "Edible",
+    "warning": "Never eat wild mushrooms based solely on a photo identification. Misidentification can be fatal. While this specific species is generally considered safe, it belongs to a group of mushrooms (ink caps) where some lookalikes can interact toxically with alcohol. Verify with a local expert.",
+    "keyFeatures": {
+      "cap": "Bell-shaped to conical, light brown to ochre color. The surface appears textured with fine, glistening, sugar-like granules (resembling mica) and has radial grooves (striations) extending from the margin.",
+      "gillsOrPores": "Not clearly visible in this angle, but would be attached, initially white, turning grey/black and eventually dissolving into black ink.",
+      "stipe": "White, fibrous, and likely hollow (partially obscured by vegetation).",
+      "sporePrintColor": "Black",
+      "other": "The cap surface glimmers in the light due to the granular veil remnants."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing in soil amidst grass and small herbaceous plants. It is likely feeding on buried decaying wood or tree roots, which is typical for this species in mixed forest areas.",
+    "funFact": "This mushroom is famous for 'deliquescing'—an enzymatic process where the cap and gills self-digest into a black, inky liquid to release spores, giving rise to the name 'Ink Cap'.",
+    "cookingOrUsage": "Edible only when very young and firm (before the gills turn black). Because they begin to dissolve into ink shortly after picking, they must be cooked almost immediately.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_184034256.jpg",
+    "scientificName": "Infundibulicybe species",
+    "commonName": "Funnel Mushroom",
+    "confidence": 70,
+    "edibility": "Unknown",
+    "warning": "This mushroom exhibits features characteristic of Clitocybe and Infundibulicybe species. While some are edible, this group contains dangerously toxic lookalikes (such as the 'Sweating Mushroom' Clitocybe rivulosa) that contain muscarine. Identification based solely on a photo is insufficient for safety. Do not consume.",
+    "keyFeatures": {
+      "cap": "Deeply depressed to funnel-shaped (infundibuliform), light tan or buff color, with a wavy, somewhat lobed margin.",
+      "gillsOrPores": "Gills are strongly decurrent (running down the stem), crowded, and pale cream to whitish in color.",
+      "stipe": "Fibrous, cylindrical, pale off-white to buff, similar in color to the gills.",
+      "sporePrintColor": "White (expected)",
+      "other": "Surface appears moist or slightly frosted, likely due to environmental conditions (dew or frost)."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing terrestrially in mixed forest litter, surrounded by pine needles, dried leaves, and grass.",
+    "funFact": "Many mushrooms in this genus were formerly classified as Clitocybe. The name 'Infundibulicybe' refers to the characteristic funnel shape of the cap.",
+    "cookingOrUsage": "None recommended due to the high risk of misidentification with toxic species.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_184038216.MP.jpg",
+    "scientificName": "Candolleomyces candolleanus",
+    "commonName": "Pale Brittlestem",
+    "confidence": 80,
+    "edibility": "Edible with Caution",
+    "warning": "This mushroom belongs to a group loosely known as 'Little Brown Mushrooms' (LBMs), which are notoriously difficult to identify and include deadly toxic species like Galerina marginata. Never consume a mushroom identified solely by a photograph.",
+    "keyFeatures": {
+      "cap": "Honey-yellow to pale brown, fading to white/cream (hygrophanous); often has white veil remnants hanging from the margin.",
+      "gillsOrPores": "Gills are crowded, attached to the stem, starting pale and becoming grayish-purple to dark brown.",
+      "stipe": "White, slender, brittle, and hollow; breaks easily.",
+      "sporePrintColor": "Dark purplish-brown",
+      "other": "Grows in dense clusters (caespitose) or groups."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Grows on the ground in grassy areas, lawns, parks, and open forests, usually feeding on buried decaying wood or tree roots.",
+    "funFact": "Until 2020, this species was widely known as Psathyrella candolleana before genetic studies moved it to the newly created genus Candolleomyces.",
+    "cookingOrUsage": "While considered edible and mild-tasting, the flesh is very thin and fragile. Most foragers avoid it due to the high risk of confusion with toxic lookalikes.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_184157595.jpg",
+    "scientificName": "Agrocybe putaminum",
+    "commonName": "Mulch Fieldcap",
+    "confidence": 65,
+    "edibility": "Inedible",
+    "warning": "DANGER: This falls into the category of 'Little Brown Mushrooms' (LBMs), which are notoriously difficult to identify and include deadly species like the Funeral Bell (Galerina marginata). Never consume a mushroom identified solely from a photograph.",
+    "keyFeatures": {
+      "cap": "Convex to broadly convex; matte, velvety, or 'kid-leather' texture; yellow-brown to dingy cinnamon-brown color.",
+      "gillsOrPores": "Gills (not clearly visible in photo, but would be adnate and pale clay to dark brown at maturity).",
+      "stipe": "Not clearly visible; typically stout, same color as cap, and lacking a ring (unlike Agrocybe praecox).",
+      "sporePrintColor": "Dark brown (not visible in photo).",
+      "other": "Distinctive matte, dry cap surface resembling a toasted hamburger bun."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing in wood chip mulch or amended soil, typical of landscaped areas, gardens, and park edges in California.",
+    "funFact": "Originally described from Kew Gardens in London, this species has become a common inhabitant of wood-chipped garden beds across the Pacific Northwest and California.",
+    "cookingOrUsage": "Considered inedible due to its often bitter or mealy taste and the high risk of confusion with toxic lookalikes.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_184203084.jpg",
+    "scientificName": "Tricholoma equestre complex",
+    "commonName": "Man on Horseback / Yellow Knight",
+    "confidence": 65,
+    "edibility": "Toxic",
+    "warning": "This mushroom was historically considered edible but has been implicated in severe, sometimes fatal, cases of rhabdomyolysis (muscle breakdown) when consumed in quantity. It also resembles other toxic species.",
+    "keyFeatures": {
+      "cap": "Convex, brown to yellowish-brown in the center, fading to a lighter margin with distinct whitish or pale radial streaks/fibrils.",
+      "gillsOrPores": "Not visible in the photo (typically yellow and notched in this species).",
+      "stipe": "Stout, cylindrical, pale yellow to distinct yellow, with a fibrous surface texture.",
+      "sporePrintColor": "White (expected)",
+      "other": "Growing solitary on ground covered with woody debris and soil."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Growing in mixed forest soil rich in woody debris/mulch; likely associated with nearby conifers (pines) or hardwoods (oaks).",
+    "funFact": "Despite its chivalrous common name, this mushroom is the subject of a modern mycological mystery, having been reclassified as poisonous after a study linked it to unexplained deaths in France in the early 2000s.",
+    "cookingOrUsage": "Do not consume. Although some guidebooks still list it as edible, modern consensus advises against it due to documented toxicity risks.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_184242303.jpg",
+    "scientificName": "Parasola plicatilis",
+    "commonName": "Pleated Inkcap",
+    "confidence": 90,
+    "edibility": "Inedible",
+    "warning": "Never consume wild mushrooms based on a photograph. While this specific species is generally considered non-toxic, it belongs to a group (inkcaps) where accurate identification is difficult and some related species can cause adverse reactions when consumed with alcohol.",
+    "keyFeatures": {
+      "cap": "Thin, delicate, and deeply pleated (plicate) like a paper umbrella; pale grey/silvery body with a smooth, brownish-orange depressed center.",
+      "gillsOrPores": "Gills",
+      "stipe": "White, slender, translucent, and smooth; lacks a ring or volva.",
+      "sporePrintColor": "Black",
+      "other": "The cap surface is smooth and lacks the veil remnants (shaggy scales or mica-like granules) seen on other inkcaps."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing singly on soil mixed with wood mulch and pine needles, near a grassy area.",
+    "funFact": "Unlike many other 'inkcaps', Parasola plicatilis usually withers and dries up like a closed umbrella rather than liquefying into black ink (deliquescing).",
+    "cookingOrUsage": "These mushrooms are too small, thin, and insubstantial to be of any culinary value.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_185013980.jpg",
+    "scientificName": "Panaeolus species",
+    "commonName": "Mottlegill",
+    "confidence": 75,
+    "edibility": "Unknown",
+    "warning": "EXTREME CAUTION: This mushroom belongs to the category of 'Little Brown Mushrooms' (LBMs), which are notoriously difficult to identify and include deadly toxic species. Some members of the genus Panaeolus are psychoactive, while others can cause gastric distress. Distinguishing them from deadly lookalikes requires examining microscopic features and spore prints. Do not eat.",
+    "keyFeatures": {
+      "cap": "Small, conical to bell-shaped (campanulate), smooth, brown to greyish-buff, appearing hygrophanous (fading as it dries)",
+      "gillsOrPores": "Gills (not clearly visible, but typical for genus), likely adnate and mottled",
+      "stipe": "Slender, cylindrical, fibrous, brownish to reddish-brown, no visible ring (annulus)",
+      "sporePrintColor": "Likely jet black or very dark brown",
+      "other": "Growing in a gregarious cluster on what appears to be straw, dung, or rich organic debris within grass"
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Found growing in a grassy area with accumulated organic debris or possibly manure, typical of nitrogen-rich substrates.",
+    "funFact": "The common name 'Mottlegill' refers to the way the gills of these mushrooms look spotted or mottled, caused by patches of spores ripening at different times.",
+    "cookingOrUsage": "None. These are not culinary mushrooms and are potentially toxic or psychoactive.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_185043785-EDIT.jpg",
+    "scientificName": "Leratiomyces percevalii",
+    "commonName": "Mulch Maid",
+    "confidence": 85,
+    "edibility": "Inedible",
+    "warning": "Foraging for wild mushrooms carries inherent risks, including severe illness or death. This species can be confused with psychoactive Psilocybe mushrooms or other toxic Strophariaceae; never consume a mushroom unless identified with 100% certainty by an expert.",
+    "keyFeatures": {
+      "cap": "Convex to broadly umbonate; honey-yellow to brownish-ochre; smooth but sticky when moist.",
+      "gillsOrPores": "Adnate gills; initially pale, becoming purple-grey to blackish with spores.",
+      "stipe": "Cylindrical; yellowish; noticeably shaggy or scaly (floccose) below the ring zone; lacks a persistent membranous ring but shows a dark purple spore deposit.",
+      "sporePrintColor": "Purple-black (visible as a dark ring zone on the stem)",
+      "other": "Growing in what appears to be woodchip mulch or enriched soil (evidenced by the netting); accompanied by smaller Coprinellus-like mushrooms."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Commonly found in woodchips, mulch, and garden beds in coastal California forests and urban interfaces during late fall and winter.",
+    "funFact": "Formerly known as Stropharia percevalii, this mushroom is a frequent 'weed' in landscaped areas, often appearing alongside inkcaps (visible at the bottom of the photo) in mulch.",
+    "cookingOrUsage": "Generally considered inedible and potentially causing gastric upset. It lacks culinary value and is often confused with other species.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_185742536.jpg",
+    "scientificName": "Lycoperdon species",
+    "commonName": "Puffball",
+    "confidence": 85,
+    "edibility": "Edible with Caution",
+    "warning": "Identification of puffballs for eating requires cutting the mushroom open vertically. The interior must be solid and pure white (like a marshmallow). If it is yellow, purple, or black inside, it may be a toxic Earthball (Scleroderma) or an over-mature specimen. If it shows the outline of a cap and stem inside, it is a deadly Amanita egg.",
+    "keyFeatures": {
+      "cap": "Globose to subglobose fruiting bodies, white to cream-colored, covered in small conical spines or warts.",
+      "gillsOrPores": "None; contains an internal spore mass (gleba).",
+      "stipe": "Often has a short, sterile base resembling a pestle, though may appear sessile when young.",
+      "sporePrintColor": "Olive-brown to dark brown (at maturity).",
+      "other": "Grows in tight clusters on soil; texture is rough and echinulate."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing directly on dry, cracked, disturbed soil in a mixed forest area.",
+    "funFact": "Raindrops falling on mature puffballs act as a trigger, compressing the sac and puffing out a cloud of spores through the apical pore, appearing like smoke.",
+    "cookingOrUsage": "Considered a choice edible when young and solid white inside. The outer skin is usually peeled off, and the flesh is often sliced and fried or used in soups.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_190030994.jpg",
+    "scientificName": "Armillaria species",
+    "commonName": "Honey Mushroom",
+    "confidence": 75,
+    "edibility": "Edible with Caution",
+    "warning": "Honey mushrooms have deadly lookalikes, such as the Funeral Bell (Galerina marginata), which grows on wood and has rusty-brown spores. They can also be confused with toxic Sulphur Tuft (Hypholoma fasciculare) or Jack-O-Lantern mushrooms. Additionally, raw Honey Mushrooms are toxic and must be thoroughly cooked. Some people experience gastric distress even when cooked.",
+    "keyFeatures": {
+      "cap": "Convex, smooth to slightly fibrous, tan to honey-brown color, bunched tightly together.",
+      "gillsOrPores": "Not visible in photo (hidden by dense growth), but this genus has gills.",
+      "stipe": "Largely obscured by the cluster; typically fibrous, thick, and whitish to brownish.",
+      "sporePrintColor": "White (not visible, but characteristic of the genus)",
+      "other": "Growth habit is caespitose (growing in very tight, dense clusters) from a common base."
+    },
+    "ecologicalRole": "Parasitic",
+    "habitatNotes": "Growing in wood chips or mulch in a mixed forest setting; likely feeding on buried wood or tree roots.",
+    "funFact": "A specimen of Armillaria ostoyae in Oregon is considered one of the largest living organisms on Earth, covering over 2,000 acres.",
+    "cookingOrUsage": "Must be parboiled and cooked thoroughly to remove toxins. Only the caps are typically eaten as stems are tough.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_190955481.jpg",
+    "scientificName": "Russula species",
+    "commonName": "Red Russula",
+    "confidence": 95,
+    "edibility": "Unknown",
+    "warning": "Red-capped Russulas are notoriously difficult to identify to the species level without checking spore print color, taste (acrid vs. mild), and reaction to chemicals. Many red Russulas (such as 'The Sickener') are gastrointestinal irritants. Never consume wild mushrooms unless identified by an expert.",
+    "keyFeatures": {
+      "cap": "Pinkish-red fading to white/cream patches; convex becoming depressed; margin appears slightly striated.",
+      "gillsOrPores": "Gills (visible on the background specimen) are cream to pale yellow and appear brittle.",
+      "stipe": "Not clearly visible in the foreground, but Russula stems are typically white, cylindrical, and snap like chalk.",
+      "sporePrintColor": "White to cream or yellowish (characteristic of the genus).",
+      "other": "Flesh is brittle and crumbly rather than fibrous."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Found in grass within a mixed forest environment, likely forming symbiotic relationships with nearby oak or pine trees common in the Glen Eden area.",
+    "funFact": "Mushrooms in the genus Russula are often called 'Brittlegills' because their distinct cell structure (sphaerocysts) makes their flesh crumble like chalk or an apple, rather than shredding into strings like most other mushrooms.",
+    "cookingOrUsage": "Generally avoided by foragers due to the prevalence of acrid, inedible species in the red-capped group. While some are edible (like the Shrimp Russula), they require specific identification steps to rule out toxic lookalikes.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_193252246.jpg",
+    "scientificName": "Omphalotus olivascens",
+    "commonName": "Western Jack-O-Lantern",
+    "confidence": 95,
+    "edibility": "Toxic",
+    "warning": "DANGER: This mushroom is TOXIC. It causes severe, prolonged gastrointestinal distress. It is a common look-alike for the edible Golden Chanterelle, but unlike Chanterelles, it has true, blade-like gills and grows in tight clusters on wood.",
+    "keyFeatures": {
+      "cap": "Orange to pumpkin-colored, smooth surface, often funnel-shaped or depressed in the center with wavy, lobed margins.",
+      "gillsOrPores": "True gills (not ridges) that are deep, sharp, crowded, and strongly decurrent (running down the stem). Color matches the cap.",
+      "stipe": "Central to off-center, thick, tapering, matching the cap color, and fused at the base with other stems in the cluster.",
+      "sporePrintColor": "Cream to pale yellow (not visible in photo, but characteristic).",
+      "other": "Grows in large, dense, overlapping clumps directly on decaying wood (stumps or buried roots)."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Growing in a dense cluster on the base of a hardwood tree (likely Oak, given the leaves present) in a mixed forest environment typical of Northern California.",
+    "funFact": "This species is bioluminescent! In fresh specimens, the enzyme luciferase can cause the gills to emit a faint greenish glow in total darkness (though it can be hard to see with the naked eye).",
+    "cookingOrUsage": "None. Consumption leads to severe vomiting, cramps, and diarrhea.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_200302810.jpg",
+    "scientificName": "Phaeolus schweinitzii",
+    "commonName": "Dyer's Polypore",
+    "confidence": 85,
+    "edibility": "Inedible",
+    "warning": "Never eat a mushroom unless you are 100% certain of its identification. This identification is based on a photograph and can be inaccurate. Many mushrooms look similar, and some are deadly toxic. Consult a local expert before foraging.",
+    "keyFeatures": {
+      "cap": "Dark reddish-brown to rusty-brown, coarsely velvety or hairy (tomentose) surface, overlapping bracket or fan shape.",
+      "gillsOrPores": "Pores on the underside (not clearly visible in photo but typical of species), likely dark brown or greenish-yellow in younger specimens.",
+      "stipe": "Often sessile (no stalk) when growing on logs, or with a short, thick, central stalk if growing from buried roots.",
+      "sporePrintColor": "Yellowish to white (not visible)",
+      "other": "Flesh is soft and spongy when young, becoming brittle, light, and corky/woody with age."
+    },
+    "ecologicalRole": "Parasitic",
+    "habitatNotes": "Growing on a decaying log or exposed root, likely of a conifer (pine needles visible on ground), in a mixed forest.",
+    "funFact": "As its common name suggests, this mushroom is highly prized by natural dyers. It yields vibrant colors ranging from yellow and gold to orange and brown, depending on the age of the mushroom and the mordant used.",
+    "cookingOrUsage": "Considered inedible due to its tough, corky texture and unappealing taste, though not known to be toxic. Primarily used for dyeing textiles.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "PXL_20251128_200532406.jpg",
+    "scientificName": "Amanita calyptroderma",
+    "commonName": "Coccora",
+    "confidence": 85,
+    "edibility": "Edible with Caution",
+    "warning": "EXTREME CAUTION ADVISED. This mushroom belongs to the genus Amanita, which contains deadly toxic species like the Death Cap (Amanita phalloides) found in the same habitat. While the Coccora is edible, it requires expert identification to distinguish it from lethal lookalikes. Misidentification can be fatal.",
+    "keyFeatures": {
+      "cap": "Convex, tan to orange-brown with a prominent thick white patch of veil tissue (calyptra) on the center and a distinctly striated (grooved) margin.",
+      "gillsOrPores": "Gills are white, crowded, and free from the stem.",
+      "stipe": "Thick, white, and robust; typically hollow with age. It emerges from a thick, sack-like volva at the base (partially buried).",
+      "sporePrintColor": "White",
+      "other": "The combination of the striate margin and the single thick white patch is a primary identifier."
+    },
+    "ecologicalRole": "Mycorrhizal",
+    "habitatNotes": "Found growing in soil among mixed leaf litter (likely Oak and Madrone) in a mixed forest environment.",
+    "funFact": "The Coccora was historically a favorite of Italian immigrants in California who associated it with the prized Amanita caesarea of Europe, though it grows alongside deadly cousins.",
+    "cookingOrUsage": "Considered a choice edible by experts, but dangerous for novices due to lookalikes.",
+    "location": "Glen Eden, California, Mixed Forest"
+  },
+  {
+    "imageFile": "original_02a3e822-7acc-44b8-95ba-b98de6b7cb48_PXL_20251128_183455001.jpg",
+    "scientificName": "Volvopluteus gloiocephalus",
+    "commonName": "Stubble Rosegill",
+    "confidence": 85,
+    "edibility": "Edible with Caution",
+    "warning": "This mushroom can be easily confused with deadly Amanita species (such as the Death Cap or Destroying Angel) which also grow in California. Identification relies on observing a pink spore print and a sack-like volva at the base, while lacking a ring on the stem. Do not consume unless expert identification is confirmed.",
+    "keyFeatures": {
+      "cap": "Greyish-brown to silver-grey, convex to flattening, surface is smooth and viscid (shiny/sticky) when moist.",
+      "gillsOrPores": "Gills are free (not attached to stem), closely spaced, initially white but turning salmon-pink/brownish as spores mature.",
+      "stipe": "White, smooth, cylindrical, solid, lacking a skirt-like ring (annulus).",
+      "sporePrintColor": "Salmon-pink",
+      "other": "Base of the stem typically has a white, sack-like volva (cup), though often obscured by grass or soil."
+    },
+    "ecologicalRole": "Saprotrophic",
+    "habitatNotes": "Found growing terrestrially in tall grass and weeds (thistles), typical of disturbed soil, gardens, or forest edges.",
+    "funFact": "Historically known as Volvariella gloiocephala, this mushroom is one of the most common species found in California lawns and grassy areas during the rainy season.",
+    "cookingOrUsage": "Edible but often considered of mediocre quality due to a watery texture. It is generally avoided by casual foragers due to the high risk of confusion with lethal Amanitas.",
+    "location": "Glen Eden, California, Mixed Forest"
+  }
+]
