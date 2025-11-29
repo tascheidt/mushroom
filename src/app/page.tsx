@@ -4,39 +4,78 @@ import { useEffect, useState } from "react";
 import type { MushroomIdentification } from "../types/mushroom";
 import { MushroomCard } from "../components/MushroomCard";
 import { LocationDisplay } from "../components/LocationDisplay";
-import { LocationPicker } from "../components/LocationPicker";
-import { MapPin, X } from "lucide-react";
+import { ObservationMap } from "../components/ObservationMap";
+import { MushroomDetailModal } from "../components/MushroomDetailModal";
+import { Map } from "lucide-react";
+import { analyzeImage, saveObservation } from "../utils/api";
 
 export default function Home() {
   const [mushrooms, setMushrooms] = useState<MushroomIdentification[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showLocationPicker, setShowLocationPicker] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
-  const [selectedMapLocation, setSelectedMapLocation] = useState<{
-    address: string;
-    lat: number;
-    lng: number;
-  } | null>(null);
+  const [activeTab, setActiveTab] = useState<"gallery" | "map">("gallery");
+  const [selectedMushroom, setSelectedMushroom] = useState<MushroomIdentification | null>(null);
 
   useEffect(() => {
-    async function fetchMushrooms() {
-      try {
-        const response = await fetch("/api/mushrooms");
-        const data = await response.json();
-        setMushrooms(data);
-      } catch (error) {
-        console.error("Error fetching mushrooms:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
     fetchMushrooms();
   }, []);
 
-  const filteredMushrooms = selectedLocation 
-    ? mushrooms.filter((m) => m.location === selectedLocation)
+  async function fetchMushrooms() {
+    try {
+      const response = await fetch("/api/mushrooms");
+      const data = await response.json();
+      setMushrooms(data);
+    } catch (error) {
+      console.error("Error fetching mushrooms:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleReprocess(mushroom: MushroomIdentification) {
+    if (!confirm(`Reprocess "${mushroom.commonName}"? This will re-analyze the image and update the observation.`)) {
+      return;
+    }
+
+    try {
+      // Re-analyze the image
+      const analysisResult = await analyzeImage(mushroom.imageFile);
+      
+      // Merge with existing data (preserve location, date, weather if they exist)
+      const updatedObservation: MushroomIdentification = {
+        ...analysisResult,
+        locationData: mushroom.locationData || analysisResult.locationData,
+        location: mushroom.location || analysisResult.location || "Unknown",
+        observationDate: mushroom.observationDate || analysisResult.observationDate,
+        observationTime: mushroom.observationTime || analysisResult.observationTime,
+        weather: mushroom.weather || analysisResult.weather,
+      };
+
+      // Save the updated observation
+      await saveObservation(updatedObservation);
+
+      // Update local state
+      setMushrooms((prev) =>
+        prev.map((m) =>
+          m.imageFile === mushroom.imageFile ? updatedObservation : m
+        )
+      );
+    } catch (error) {
+      console.error("Error reprocessing mushroom:", error);
+      alert("Failed to reprocess observation. Please try again.");
+    }
+  }
+
+  const filteredMushrooms = selectedLocation
+    ? mushrooms.filter((m) => {
+        const locationKey = m.locationData?.formattedLocation || m.locationData?.address || m.location || "Unknown";
+        return locationKey === selectedLocation;
+      })
     : mushrooms;
+
+  const observationsWithLocation = mushrooms.filter(
+    (m) => m.locationData?.lat && m.locationData?.lng
+  );
 
   return (
     <div className="min-h-screen">
@@ -55,99 +94,65 @@ export default function Home() {
               confirm with a human expert.
             </p>
           </div>
-          <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 px-4 py-3 text-xs text-emerald-900 shadow-sm">
-            <p className="font-semibold uppercase tracking-[0.24em] text-emerald-800">
-              HOW TO UPDATE
-            </p>
-            <p className="mt-1">
-              Add new photos to <code className="rounded bg-emerald-900/5 px-1.5 py-0.5">
-                public/images
-              </code>{" "}
-              then run{" "}
-              <code className="rounded bg-emerald-900/5 px-1.5 py-0.5">npm run analyze</code>{" "}
-              to refresh this guide.
-            </p>
-          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 pb-12 pt-6 sm:px-10 sm:pt-8">
+        {/* Tab Navigation */}
+        <div className="mb-6 flex gap-2 border-b border-neutral-200">
+          <button
+            type="button"
+            onClick={() => setActiveTab("gallery")}
+            className={`border-b-2 px-4 py-2 text-sm font-medium transition ${
+              activeTab === "gallery"
+                ? "border-emerald-600 text-emerald-900"
+                : "border-transparent text-neutral-600 hover:text-neutral-900"
+            }`}
+          >
+            Gallery ({mushrooms.length})
+          </button>
+          {observationsWithLocation.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setActiveTab("map")}
+              className={`border-b-2 px-4 py-2 text-sm font-medium transition ${
+                activeTab === "map"
+                  ? "border-emerald-600 text-emerald-900"
+                  : "border-transparent text-neutral-600 hover:text-neutral-900"
+              }`}
+            >
+              <Map className="mr-1.5 inline h-4 w-4" />
+              Map ({observationsWithLocation.length})
+            </button>
+          )}
+        </div>
+
         {loading ? (
           <section className="mt-10 rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/80 px-6 py-10 text-center text-sm text-neutral-700">
             <p className="font-medium text-neutral-900">Loading field notes...</p>
           </section>
-        ) : mushrooms.length === 0 ? (
-          <section className="mt-10 rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/80 px-6 py-10 text-center text-sm text-neutral-700">
-            <p className="font-medium text-neutral-900">No identifications yet.</p>
-            <p className="mt-2">
-              Place your mushroom photos into{" "}
-              <code className="rounded bg-white px-1.5 py-0.5">public/images</code>, then run{" "}
-              <code className="rounded bg-white px-1.5 py-0.5">npm run analyze</code> in the{" "}
-              <code className="rounded bg-white px-1.5 py-0.5">web</code> directory.
-            </p>
+        ) : activeTab === "map" ? (
+          <section className="mt-6">
+            <ObservationMap
+              observations={mushrooms}
+              onMarkerClick={(obs) => {
+                setSelectedLocation(obs.location);
+                setActiveTab("gallery");
+              }}
+            />
           </section>
         ) : (
           <div className="space-y-8">
             {/* Location Display Section */}
-            <section className="mt-6">
-              <LocationDisplay 
-                mushrooms={mushrooms} 
-                selectedLocation={selectedLocation}
-                onLocationSelect={setSelectedLocation}
-              />
-            </section>
-
-            {/* Location Picker Section */}
-            <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-              <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-emerald-600" />
-                  <h2 className="text-sm font-semibold uppercase tracking-[0.28em] text-neutral-700">
-                    Explore Locations on Map
-                  </h2>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setShowLocationPicker(!showLocationPicker)}
-                  className="rounded-lg border border-neutral-300 bg-white px-4 py-2 text-xs font-medium text-neutral-700 transition hover:bg-neutral-50"
-                >
-                  {showLocationPicker ? "Hide Map" : "Show Map"}
-                </button>
-              </div>
-
-              {showLocationPicker && (
-                <div className="mt-4">
-                  <LocationPicker
-                    onLocationSelect={(location) => {
-                      setSelectedMapLocation(location);
-                      console.log("Selected location:", location);
-                    }}
-                  />
-                  {selectedMapLocation && (
-                    <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50/30 p-4">
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex-1">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-900">
-                            Selected Location
-                          </p>
-                          <p className="mt-1 text-sm text-emerald-800">{selectedMapLocation.address}</p>
-                          <p className="mt-1 text-xs text-emerald-600">
-                            Coordinates: {selectedMapLocation.lat.toFixed(6)}, {selectedMapLocation.lng.toFixed(6)}
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => setSelectedMapLocation(null)}
-                          className="rounded p-1 text-emerald-600 hover:bg-emerald-100"
-                        >
-                          <X className="h-4 w-4" />
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </section>
+            {mushrooms.length > 0 && (
+              <section className="mt-6">
+                <LocationDisplay
+                  mushrooms={mushrooms}
+                  selectedLocation={selectedLocation}
+                  onLocationSelect={setSelectedLocation}
+                />
+              </section>
+            )}
 
             {/* Mushroom Gallery Section */}
             <section className="mt-6 space-y-4">
@@ -160,15 +165,39 @@ export default function Home() {
                   {filteredMushrooms.length === 1 ? "observation" : "observations"} documented.
                 </p>
               </div>
-              <div className="grid gap-5 card-grid">
-                {filteredMushrooms.map((mushroom) => (
-                  <MushroomCard key={mushroom.imageFile} mushroom={mushroom} />
-                ))}
-              </div>
+              {filteredMushrooms.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/80 px-6 py-10 text-center text-sm text-neutral-700">
+                  <p className="font-medium text-neutral-900">No observations found</p>
+                  <p className="mt-2">
+                    {selectedLocation
+                      ? "Try selecting a different location or clear the filter."
+                      : "Run 'npm run analyze' in the web directory to process images from the public/images folder."}
+                  </p>
+                </div>
+              ) : (
+                <div className="grid gap-5 card-grid">
+                  {filteredMushrooms.map((mushroom) => (
+                    <MushroomCard
+                      key={mushroom.imageFile}
+                      mushroom={mushroom}
+                      onOpenDetail={() => setSelectedMushroom(mushroom)}
+                      onReprocess={handleReprocess}
+                    />
+                  ))}
+                </div>
+              )}
             </section>
           </div>
         )}
       </main>
+
+      {/* Mushroom Detail Modal */}
+      {selectedMushroom && (
+        <MushroomDetailModal
+          mushroom={selectedMushroom}
+          onClose={() => setSelectedMushroom(null)}
+        />
+      )}
     </div>
   );
 }
