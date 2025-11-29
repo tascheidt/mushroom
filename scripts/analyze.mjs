@@ -165,7 +165,7 @@ async function main() {
 
   const genAI = getGeminiClient();
   const model = genAI.getGenerativeModel({
-    model: "gemini-3.0-pro",
+    model: "gemini-3-pro-preview",
   });
 
   const results = [];

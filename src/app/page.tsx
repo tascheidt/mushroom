@@ -1,23 +1,42 @@
-import fs from "fs";
-import path from "path";
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
 import type { MushroomIdentification } from "../types/mushroom";
 import { MushroomCard } from "../components/MushroomCard";
-
-function loadMushroomData(): MushroomIdentification[] {
-  try {
-    const filePath = path.join(process.cwd(), "src", "data", "mushrooms.json");
-    if (!fs.existsSync(filePath)) return [];
-    const raw = fs.readFileSync(filePath, "utf8");
-    const parsed = JSON.parse(raw) as MushroomIdentification[];
-    return parsed;
-  } catch {
-    return [];
-  }
-}
+import { LocationDisplay } from "../components/LocationDisplay";
+import { LocationPicker } from "../components/LocationPicker";
+import { MapPin, X } from "lucide-react";
 
 export default function Home() {
-  const mushrooms = loadMushroomData();
+  const [mushrooms, setMushrooms] = useState<MushroomIdentification[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showLocationPicker, setShowLocationPicker] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [selectedMapLocation, setSelectedMapLocation] = useState<{
+    address: string;
+    lat: number;
+    lng: number;
+  } | null>(null);
+
+  useEffect(() => {
+    async function fetchMushrooms() {
+      try {
+        const response = await fetch("/api/mushrooms");
+        const data = await response.json();
+        setMushrooms(data);
+      } catch (error) {
+        console.error("Error fetching mushrooms:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchMushrooms();
+  }, []);
+
+  const filteredMushrooms = selectedLocation 
+    ? mushrooms.filter((m) => m.location === selectedLocation)
+    : mushrooms;
 
   return (
     <div className="min-h-screen">
@@ -53,7 +72,11 @@ export default function Home() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6 pb-12 pt-6 sm:px-10 sm:pt-8">
-        {mushrooms.length === 0 ? (
+        {loading ? (
+          <section className="mt-10 rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/80 px-6 py-10 text-center text-sm text-neutral-700">
+            <p className="font-medium text-neutral-900">Loading field notes...</p>
+          </section>
+        ) : mushrooms.length === 0 ? (
           <section className="mt-10 rounded-2xl border border-dashed border-neutral-300 bg-neutral-50/80 px-6 py-10 text-center text-sm text-neutral-700">
             <p className="font-medium text-neutral-900">No identifications yet.</p>
             <p className="mt-2">
@@ -64,25 +87,86 @@ export default function Home() {
             </p>
           </section>
         ) : (
-          <section className="mt-6 space-y-4">
-            <div className="flex items-baseline justify-between gap-2">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-600">
-                FIELD ENTRIES
-              </h2>
-              <p className="text-xs text-neutral-600">
-                {mushrooms.length}{" "}
-                {mushrooms.length === 1 ? "observation" : "observations"} documented.
-              </p>
-            </div>
-            <div className="grid gap-5 card-grid">
-              {mushrooms.map((mushroom) => (
-                <MushroomCard
-                  key={mushroom.imageFile}
-                  mushroom={mushroom}
-                />
-              ))}
-            </div>
-          </section>
+          <div className="space-y-8">
+            {/* Location Display Section */}
+            <section className="mt-6">
+              <LocationDisplay 
+                mushrooms={mushrooms} 
+                selectedLocation={selectedLocation}
+                onLocationSelect={setSelectedLocation}
+              />
+            </section>
+
+            {/* Location Picker Section */}
+            <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-emerald-600" />
+                  <h2 className="text-sm font-semibold uppercase tracking-[0.28em] text-neutral-700">
+                    Explore Locations on Map
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowLocationPicker(!showLocationPicker)}
+                  className="rounded-lg border border-neutral-300 bg-white px-4 py-2 text-xs font-medium text-neutral-700 transition hover:bg-neutral-50"
+                >
+                  {showLocationPicker ? "Hide Map" : "Show Map"}
+                </button>
+              </div>
+
+              {showLocationPicker && (
+                <div className="mt-4">
+                  <LocationPicker
+                    onLocationSelect={(location) => {
+                      setSelectedMapLocation(location);
+                      console.log("Selected location:", location);
+                    }}
+                  />
+                  {selectedMapLocation && (
+                    <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50/30 p-4">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-900">
+                            Selected Location
+                          </p>
+                          <p className="mt-1 text-sm text-emerald-800">{selectedMapLocation.address}</p>
+                          <p className="mt-1 text-xs text-emerald-600">
+                            Coordinates: {selectedMapLocation.lat.toFixed(6)}, {selectedMapLocation.lng.toFixed(6)}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedMapLocation(null)}
+                          className="rounded p-1 text-emerald-600 hover:bg-emerald-100"
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+
+            {/* Mushroom Gallery Section */}
+            <section className="mt-6 space-y-4">
+              <div className="flex items-baseline justify-between gap-2">
+                <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-600">
+                  FIELD ENTRIES
+                </h2>
+                <p className="text-xs text-neutral-600">
+                  {filteredMushrooms.length}{" "}
+                  {filteredMushrooms.length === 1 ? "observation" : "observations"} documented.
+                </p>
+              </div>
+              <div className="grid gap-5 card-grid">
+                {filteredMushrooms.map((mushroom) => (
+                  <MushroomCard key={mushroom.imageFile} mushroom={mushroom} />
+                ))}
+              </div>
+            </section>
+          </div>
         )}
       </main>
     </div>
